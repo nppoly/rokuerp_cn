@@ -1,5 +1,5 @@
 # Site settings
-title: 先进的EPR和CRM系统
+title: 上海Roku ERP管理系统
 email: service@nppoly.net
 description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -7,7 +7,7 @@ url: "http://www.nppoly.net" # the base hostname & protocol for your site
 
 twitter_username:
 github_username:
-product_name: FDUSELESS
+product_name: 上海Roku ERP管理系统
 
 # Build settings
 markdown: kramdown
