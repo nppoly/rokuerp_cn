@@ -15,3 +15,5 @@ plugins:
   - jekyll-seo-tag
 
 lang: zh-CN
+
+google_analytics: UA-119554930-1
