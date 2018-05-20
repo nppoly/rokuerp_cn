@@ -5,7 +5,73 @@
 
 <body id="page-top">
   {% include nav.html %}
-  {{content}}
+  <section class="blog-container" id="news" style="padding-bottom:20px">
+    <div id="post" class="container">
+
+      <div>
+        <a href="/news/">回到新闻中心</a>
+      </div>
+
+      <article>
+        <h1>{{ page.title }}</h1>
+
+        <div class="meta clearfix">
+          {% if page.author %}
+          <strong>Author:</strong> {{ page.author }}
+          {% endif %}
+
+          {% if page.license %}
+          <br /><strong>License:</strong> {{ page.license }}
+          {% endif %}
+
+          <br /><br />
+          {% if page.homepage %}
+          <a class="btn" href="{{ page.homepage }}"><i class="icon-home"></i> Homepage</a>
+          {% endif %}
+          {% if page.download %}
+          <a class="btn" href="{{ page.download }}"><i class="icon-download-alt"></i> Download</a>
+          {% endif %}
+          {% if page.demo %}
+          <a class="btn" href="{{ page.demo }}"><i class="icon-road"></i> Demo</a>
+          {% endif %}
+          {% if page.license_link %}
+          <a class="btn" href="{{ page.license_link }}"><i class="icon-file"></i> License</a>
+          {% endif %}
+        </div>
+
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <footer>
+          	<span>
+				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified">{{ page.date | date: date_format }}</time>
+			</span>
+          <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
+        </footer>
+      </article>
+
+      <div class="article-previous-next clearfix">
+        {%- if page.next -%}
+        {%- assign __path = page.next.url -%}
+        {%- include snippets/prepend-baseurl.html -%}
+        {%- assign href = __return -%}
+        <div class="article-previous">
+          后一篇: <a href="{{ href }}">{{ page.next.title }}</a>
+        </div>
+        {%- endif -%}
+        {%- if page.previous -%}
+        {%- assign __path = page.previous.url -%}
+        {%- include snippets/prepend-baseurl.html -%}
+        {%- assign href = __return -%}
+        <div class="article-next">
+          前一篇: <a href="{{ href }}">{{ page.previous.title }}</a>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
   {% include scripts.html %}
 </body>
 
