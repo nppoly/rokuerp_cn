@@ -14,7 +14,12 @@ brand: Roku
 markdown: kramdown
 plugins:
   - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
 
 lang: zh-CN
 
 google_analytics: UA-119554930-1
+
+paginate: 8
+
