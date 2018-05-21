@@ -1,6 +1,6 @@
 # Site settings
 title: Roku ERP管理系统
-email: service@nppoly.net
+email: service@rokuerp.com
 description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.rokuerp.com" # the base hostname & protocol for your site
