@@ -4,75 +4,73 @@
 {% include head.html %}
 
 <body id="page-top">
-  {% include nav.html %}
-  <section class="blog-container" id="news" style="padding-bottom:20px">
-    <div id="post" class="container">
-
-      <div>
-        <a href="/news/">回到新闻中心</a>
-      </div>
-
-      <article>
-        <h1>{{ page.title }}</h1>
-
-        <div class="meta clearfix">
-          {% if page.author %}
-          <strong>Author:</strong> {{ page.author }}
-          {% endif %}
-
-          {% if page.license %}
-          <br /><strong>License:</strong> {{ page.license }}
-          {% endif %}
-
-          <br /><br />
-          {% if page.homepage %}
-          <a class="btn" href="{{ page.homepage }}"><i class="icon-home"></i> Homepage</a>
-          {% endif %}
-          {% if page.download %}
-          <a class="btn" href="{{ page.download }}"><i class="icon-download-alt"></i> Download</a>
-          {% endif %}
-          {% if page.demo %}
-          <a class="btn" href="{{ page.demo }}"><i class="icon-road"></i> Demo</a>
-          {% endif %}
-          {% if page.license_link %}
-          <a class="btn" href="{{ page.license_link }}"><i class="icon-file"></i> License</a>
-          {% endif %}
+{% include nav.html %}
+<section class="bg-primary" id="post-head">
+    <div class="container">
+        <div class="row">
+            <div>
+                <a href="/news/">回到新闻中心</a>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ page.title }}</h2>
+                <!-- <hr class="light">
+                <p class="text-faded"></p> -->
+                <!-- <a href="#" class="btn btn-default btn-xl">看看我们的产品吧</a> -->
+            </div>
         </div>
-
-
-        <div class="post-content">
-          {{ content }}
-        </div>
-
-        <footer>
-          	<span>
-				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified">{{ page.date | date: date_format }}</time>
-			</span>
-          <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
-        </footer>
-      </article>
-
-      <div class="article-previous-next clearfix">
-        {%- if page.next -%}
-        {%- assign __path = page.next.url -%}
-        {%- include snippets/prepend-baseurl.html -%}
-        {%- assign href = __return -%}
-        <div class="article-previous">
-          后一篇: <a href="{{ href }}">{{ page.next.title }}</a>
-        </div>
-        {%- endif -%}
-        {%- if page.previous -%}
-        {%- assign __path = page.previous.url -%}
-        {%- include snippets/prepend-baseurl.html -%}
-        {%- assign href = __return -%}
-        <div class="article-next">
-          前一篇: <a href="{{ href }}">{{ page.previous.title }}</a>
-        </div>
-        {%- endif -%}
-      </div>
     </div>
-  </section>
-  {% include scripts.html %}
+</section>
+<section class="blog-container" id="news" style="padding-bottom:20px">
+    <div class="m-post">
+        <div class="main clearfix js-main">
+            <div class="col-1">
+                {%- include article-info.html -%}
+                <article class="js-article" itemscope itemtype="http://schema.org/BlogPosting">
+                    <div class="m-article-content js-article-content" itemprop="articleBody">{{ content }}</div>
+                    <footer>
+                        {%- if page.modify_date -%}
+                        {%- assign __locale = site.data.locale.ARTICLE_DATE_FORMAT -%}
+                        {%- include snippets/locale-to-string.html -%}
+                        {%- assign date_format = __return -%}
+                        {%- assign __locale = site.data.locale.LAST_UPDATED -%}
+                        {%- include snippets/locale-to-string.html -%}
+                        <span>{{ __return }}
+							<time datetime="{{ page.modify_date | date_to_xmlschema }}" itemprop="dateModified">{{ page.modify_date | date: date_format }}</time>
+						</span>
+                        {%- else -%}
+                        <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
+                        {%- endif -%}
+                    </footer>
+                </article>
+
+
+                <div class="article-previous-next clearfix">
+                    {%- if page.next -%}
+                    {%- assign __path = page.next.url -%}
+                    {%- include snippets/prepend-baseurl.html -%}
+                    {%- assign href = __return -%}
+                    <div class="article-previous">
+                        之后一篇: <a href="{{ href }}">{{ page.next.title }}</a>
+                    </div>
+                    {%- endif -%}
+                    {%- if page.previous -%}
+                    {%- assign __path = page.previous.url -%}
+                    {%- include snippets/prepend-baseurl.html -%}
+                    {%- assign href = __return -%}
+                    <div class="article-next">
+                        之前一篇: <a href="{{ href }}">{{ page.previous.title }}</a>
+                    </div>
+                    {%- endif -%}
+                </div>
+
+                {%- if jekyll.environment != "development" and page.comment != false -%}
+                <section>{%- include comment.html -%}</section>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+{% include scripts.html %}
 </body>
 
 </html>
