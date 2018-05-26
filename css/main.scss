@@ -4,8 +4,8 @@
 @charset "utf-8";
 
 // Example Defaults
-// $base-font-family: Helvetica, Arial, sans-serif;
-// $base-font-size:   16px;
+$base-font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+//$base-font-size: 16px;
 // $small-font-size:  $base-font-size * 0.875;
 // $base-line-height: 1.5;
 
@@ -37,8 +37,32 @@
 $theme-primary: #F05F40;
 $theme-dark: #222;
 
+* {
+  font-family: $base-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "mixins",
-        "base"
+@import "mixins",
+"base",
+"colors/default",
+"common/variables",
+"common/highlighting",
+"common/classes",
+"common/reset",
+"common/components/button",
+"components/main",
+"components/header",
+"components/article.info",
+"components/article.content",
+"components/pagination",
+"components/tags",
+"components/toc",
+"components/follow-me",
+"components/license",
+"components/footer",
+
+"layout/list_base",
+"layout/post"
 ;
