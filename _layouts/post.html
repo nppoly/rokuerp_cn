@@ -8,19 +8,13 @@
 <section class="bg-primary" id="post-head">
     <div class="container">
         <div class="row">
-            <div>
-                <a href="/news/">回到新闻中心</a>
-            </div>
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">{{ page.title }}</h2>
-                <!-- <hr class="light">
-                <p class="text-faded"></p> -->
-                <!-- <a href="#" class="btn btn-default btn-xl">看看我们的产品吧</a> -->
+                <h2 class="section-heading article-title">{{ page.title }}</h2>
             </div>
         </div>
     </div>
 </section>
-<section class="blog-container" id="news" style="padding-bottom:20px">
+<section class="blog-container" id="news">
     <div class="m-post">
         <div class="main clearfix js-main">
             <div class="col-1">
@@ -61,6 +55,10 @@
                         之前一篇: <a href="{{ href }}">{{ page.previous.title }}</a>
                     </div>
                     {%- endif -%}
+                </div>
+
+                <div>
+                    <a href="/news/">回到新闻中心</a>
                 </div>
 
                 {%- if jekyll.environment != "development" and page.comment != false -%}
