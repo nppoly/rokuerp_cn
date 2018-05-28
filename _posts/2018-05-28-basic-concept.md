@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ERP 基本概念"(一)
+title:  "ERP 基本概念(一)"
 date:   2018-05-28 22:15:59 +0800
 categories: ERP
 ---
